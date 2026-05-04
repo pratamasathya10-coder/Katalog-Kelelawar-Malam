@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#000000"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#121212">
+    android:layout_height="match_parent">
 
     <TextView
-        android:text="Katalog Kelelawar Malam"
-        android:textSize="22sp"
+        android:text="Kelelawar Malam"
+        android:textSize="28sp"
+        android:textColor="#FF0000"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
         android:layout_marginBottom="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -21,11 +20,11 @@
         android:text="Profil Band"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/btnAlbum"
-        android:text="Daftar Album"
+        android:text="Daftar Lagu"
         android:layout_width="200dp"
         android:layout_height="wrap_content"/>
 

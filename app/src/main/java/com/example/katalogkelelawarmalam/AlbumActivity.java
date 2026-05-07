@@ -1,24 +1,43 @@
 package com.example.katalogkelelawarmalam;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class AlbumActivity extends AppCompatActivity {
+
+    EditText inputSearch;
+    Button btnCari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_album);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        inputSearch = findViewById(R.id.inputSearch);
+        btnCari = findViewById(R.id.btnCari);
+
+        btnCari.setOnClickListener(v -> {
+
+            String keyword = inputSearch.getText().toString();
+
+            if (keyword.isEmpty()) {
+
+                Toast.makeText(this,
+                        "Masukkan nama lagu terlebih dahulu!",
+                        Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                Toast.makeText(this,
+                        "Mencari lagu: " + keyword,
+                        Toast.LENGTH_SHORT).show();
+
+            }
+
         });
     }
 }

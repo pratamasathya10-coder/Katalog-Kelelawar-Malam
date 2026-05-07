@@ -4,28 +4,39 @@
     android:gravity="center"
     android:background="#000000"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <TextView
         android:text="Kelelawar Malam"
-        android:textSize="28sp"
-        android:textColor="#FF0000"
+        android:textSize="32sp"
+        android:textColor="#8B0000"
         android:textStyle="bold"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Katalog Musik Horor Indonesia"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:layout_marginBottom="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnProfil"
         android:text="Profil Band"
-        android:layout_width="200dp"
+        android:textSize="16sp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="15dp"/>
 
     <Button
         android:id="@+id/btnAlbum"
         android:text="Daftar Lagu"
-        android:layout_width="200dp"
+        android:textSize="16sp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.katalogkelelawarmalam;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,73 +49,103 @@ public class AlbumActivity extends AppCompatActivity {
 
         listAlbum.setAdapter(adapter);
 
-        // VALIDASI + LINEAR SEARCH
+        // SEARCH + VALIDASI + LOGCAT
         btnCari.setOnClickListener(v -> {
 
-            String keyword = inputSearch.getText().toString();
+            try {
 
-            if (keyword.isEmpty()) {
+                String keyword = inputSearch.getText().toString();
 
-                Toast.makeText(this,
-                        "Masukkan nama lagu terlebih dahulu!",
-                        Toast.LENGTH_SHORT).show();
+                Log.d("42430056", "User mencari lagu: " + keyword);
 
-            } else {
-
-                ArrayList<String> hasil = new ArrayList<>();
-
-                for (String l : lagu) {
-
-                    if (l.toLowerCase().contains(keyword.toLowerCase())) {
-
-                        hasil.add(l);
-
-                    }
-                }
-
-                if (hasil.isEmpty()) {
+                if (keyword.isEmpty()) {
 
                     Toast.makeText(this,
-                            "Lagu tidak ditemukan...",
+                            "Masukkan nama lagu terlebih dahulu!",
                             Toast.LENGTH_SHORT).show();
 
                 } else {
 
-                    ArrayAdapter<String> hasilAdapter =
-                            new ArrayAdapter<>(
-                                    this,
-                                    android.R.layout.simple_list_item_1,
-                                    hasil
-                            );
+                    ArrayList<String> hasil = new ArrayList<>();
 
-                    listAlbum.setAdapter(hasilAdapter);
+                    for (String l : lagu) {
 
-                }
-            }
-        });
+                        if (l.toLowerCase().contains(keyword.toLowerCase())) {
 
-        // BUBBLE SORT A-Z
-        btnSort.setOnClickListener(v -> {
+                            hasil.add(l);
 
-            for (int i = 0; i < lagu.length - 1; i++) {
+                        }
+                    }
 
-                for (int j = 0; j < lagu.length - i - 1; j++) {
+                    if (hasil.isEmpty()) {
 
-                    if (lagu[j].compareTo(lagu[j + 1]) > 0) {
+                        Toast.makeText(this,
+                                "Lagu tidak ditemukan...",
+                                Toast.LENGTH_SHORT).show();
 
-                        String temp = lagu[j];
-                        lagu[j] = lagu[j + 1];
-                        lagu[j + 1] = temp;
+                    } else {
+
+                        ArrayAdapter<String> hasilAdapter =
+                                new ArrayAdapter<>(
+                                        this,
+                                        android.R.layout.simple_list_item_1,
+                                        hasil
+                                );
+
+                        listAlbum.setAdapter(hasilAdapter);
 
                     }
                 }
+
+            } catch (Exception e) {
+
+                Toast.makeText(this,
+                        "Terjadi error!",
+                        Toast.LENGTH_SHORT).show();
+
+                Log.e("42430056", "Error search", e);
+
             }
 
-            adapter.notifyDataSetChanged();
+        });
 
-            Toast.makeText(this,
-                    "Lagu berhasil diurutkan A-Z",
-                    Toast.LENGTH_SHORT).show();
+        // BUBBLE SORT + LOGCAT
+        btnSort.setOnClickListener(v -> {
+
+            try {
+
+                for (int i = 0; i < lagu.length - 1; i++) {
+
+                    for (int j = 0; j < lagu.length - i - 1; j++) {
+
+                        if (lagu[j].compareTo(lagu[j + 1]) > 0) {
+
+                            String temp = lagu[j];
+                            lagu[j] = lagu[j + 1];
+                            lagu[j + 1] = temp;
+
+                        }
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+
+                Toast.makeText(this,
+                        "Lagu berhasil diurutkan A-Z",
+                        Toast.LENGTH_SHORT).show();
+
+                Log.d("42430056",
+                        "Data lagu berhasil diurutkan");
+
+            } catch (Exception e) {
+
+                Toast.makeText(this,
+                        "Sorting gagal!",
+                        Toast.LENGTH_SHORT).show();
+
+                Log.e("42430056", "Error sorting", e);
+
+            }
 
         });
     }

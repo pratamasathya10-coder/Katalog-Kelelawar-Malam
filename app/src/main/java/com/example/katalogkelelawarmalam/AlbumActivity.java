@@ -43,7 +43,7 @@ public class AlbumActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_list_item_1,
+                R.layout.item_lagu,
                 lagu
         );
 
@@ -88,7 +88,7 @@ public class AlbumActivity extends AppCompatActivity {
                         ArrayAdapter<String> hasilAdapter =
                                 new ArrayAdapter<>(
                                         this,
-                                        android.R.layout.simple_list_item_1,
+                                        R.layout.item_lagu,
                                         hasil
                                 );
 
